@@ -2,7 +2,7 @@
 # This script creates an RSA key pair with a specified name, bit size, and passphrase.
 
 # Variables
-KEY_NAME="~/.ssh/school"
+KEY_NAME="school"
 KEY_BITS=4096
 PASSPHRASE="betty"
 
