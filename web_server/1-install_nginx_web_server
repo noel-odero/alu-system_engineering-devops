@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
-# Installs nginx server
+# commands to install nginx on web server yep
 
-sudo apt-get update
-sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
-#sudo touch /var/www/html/index.html
-#sudo rm /var/www/html/index.nginx-debian.html
-sudo chown ubuntu:ubuntu -R /var/www/html
-sudo rm /var/www/html/index.nginx-debian.html
-echo "Holberton School" | sudo tee /var/www/html/index.html > /dev/null
-sudo service nginx restart
+apt-get update
+apt-get install -y nginx
+
+mkdir /etc/nginx/html
+touch /etc/nginx/html/index.html
+echo "Holberton School" >/etc/nginx/html/index.html
+printf %s "server {
+     listen      80 default_server;
+     listen      [::]:80 default_server;
+     root        /etc/nginx/html;
+     index       index.html index.htm;
+}
+" >/etc/nginx/sites-available/default
+
+service nginx restart
